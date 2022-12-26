@@ -1,0 +1,158 @@
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+}
+
+.content-container {
+  margin-left: 50px;
+}
+
+.featured-content {
+  height: 50vh;
+  padding: 50px;
+}
+
+.featured-title {
+  width: 200px;
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin: 30px 0;
+}
+
+.featured-button {
+  width: 500px;
+  height: 40px;
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.watch-button {
+  padding-right: 10px;
+}
+
+.movie-list-container {
+  padding: 0 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item {
+  margin-right: 30px;
+  transition: all 1s ease-in-out;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  transition: all 1s ease-in-out;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  color: white;
+  padding: 0 10px;
+  /* background-color: gray; */
+  font-size: 33px;
+  font-style: oblique;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 30px;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item-desc {
+  color: white;
+  /* background-color: gray; */
+  font-size: 15px;
+  padding: 10px;
+  font-style: italic;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  width: 230px;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.arrow {
+  font-size: 120px;
+  color: lightgrey;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  opacity: 0.7;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.movie-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: #fff;
+  color: black;
+}
+
+.sidebar.active {
+  background-color: white;
+}
+
+.left-menu-icon.active {
+  color: black;
+}
+
+.toggle.active {
+  background-color: black;
+}
+
+.toggle-ball.active {
+  background-color: white;
+  color: black;
+  transform: translateX(-20px);
+}
+
+@media only screen and (max-width: 900px) {
+  .menu-container {
+    display: none;
+  }
+}
