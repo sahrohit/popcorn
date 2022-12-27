@@ -25,7 +25,8 @@ const MovieList = ({ fetchURL }) => {
         data.map((item) => (
           <MovieListItem
             key={item.id}
-            imageUrl={item.background_image_original}
+            imageUrl={item.large_cover_image}
+            // imageUrl={item.background_image_original}
             name={item.title}
             description={item.title_long}
           />
