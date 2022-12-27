@@ -84,10 +84,24 @@ const HomePage = () => {
           <div className="movie-list-container" key={section.title}>
             <h1 className="movie-list-title">{section.title}</h1>
             <div className="movie-list-wrapper">
-              <div className="movie-list">
+              <div
+                className="movie-list"
+                style={{
+                  transform: clickedTitle === section.title && transformStyle,
+                }}
+              >
                 <MovieList fetchURL={section.fetchURL} />
               </div>
-              <i className="fas fa-chevron-right arrow"></i>
+              <i
+                className="fas fa-chevron-right arrow"
+                onClick={() => {
+                  translate(
+                    section.title,
+                    `translateX(${-300 * clickCounter}px)`
+                  );
+                  setClickCounter((clickCounter) => clickCounter + 1);
+                }}
+              ></i>
             </div>
           </div>
         ))}
