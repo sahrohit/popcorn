@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import MovieList from "../components/MovieList";
 import "../styles/Home.css";
+import ImageSlider from "../components/ImageSlider";
 
 const HomePage = () => {
   const [clickCounter, setClickCounter] = useState(0);
   const [transformStyle, setTransforStyle] = useState("");
   const [clickedTitle, setClickedTitle] = useState("");
+  const [previews, setPreviews] = useState([]);
 
   const translate = (title, transformStyle) => {
     if (clickCounter > 10) {
@@ -17,16 +20,65 @@ const HomePage = () => {
     }
   };
 
+  const [data, setData] = useState([]);
+  const getAllData = () => {
+    axios
+      .get(
+        "https://yts.mx/api/v2/list_movies.json?quality=3D&minimum_rating=8&limit=5"
+      )
+      .then((response) => {
+        setData(response.data.data.movies);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getAllData();
+  }, []);
+
+  let arrayOfImage = [];
+
+  useEffect(() => {
+    console.log('data', data);
+    data.map((movie) => {
+      // console.log("url", movie.background_image);
+      // arrayOfImage.push(movie.background_image);
+      setPreviews([
+        ...previews,
+        {
+          url: movie.background_image,
+          title: movie.title,
+          summary: movie.summary,
+        }
+      ]);
+    });
+  }, [])
+
+  console.log('previews', previews);
+
   return (
     <div className="container">
       <div className="content-container">
-        <div
+        <div className="preview-container">
+          <div className="preview-img">
+            <ImageSlider slides={arrayOfImage} />
+          </div>
+          <div className="preview-title">Hello there</div>
+          <div className="preview-desc">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit aut
+            error accusamus mollitia sunt! Voluptates, explicabo? Magni
+            voluptates cum assumenda dicta dolor, repellendus minus quia
+            quibusdam? Ullam corrupti architecto odio?
+          </div>
+        </div>
+        {/* <div
           className="featured-content"
           style={{
             background: `linear-gradient(to bottom, rgba(0,0,0,0), #151515), url(https://deadline.com/wp-content/uploads/2022/09/Wednesday_S1_E1_00_08_38_23R.jpg?w=1280)`,
           }}
         >
-          {/* <img className="featured-title" src="img/f-t-1.png" alt="" /> */}
+          <img className="featured-title" src="img/f-t-1.png" alt="" />
           <p className="featured-desc">
             While attending Nevermore Academy, Wednesday Addams attempts to
             master her emerging psychic ability, thwart a killing spree and
@@ -35,7 +87,7 @@ const HomePage = () => {
           <button className="featured-button" type="button">
             <i className="watch-button fas fa-play"></i>WATCH NOW
           </button>
-        </div>
+        </div> */}
 
         {SECTIONS.map((section, i) => (
           <div className="movie-list-container" key={section.title}>
@@ -54,7 +106,7 @@ const HomePage = () => {
                 onClick={() => {
                   translate(
                     section.title,
-                    `translateX(${-300 * clickCounter}px)`
+                    `translateX(${-420 * clickCounter}px)`
                   );
                   setClickCounter((clickCounter) => clickCounter + 1);
                 }}
@@ -97,7 +149,7 @@ const HomePage = () => {
                 onClick={() => {
                   translate(
                     section.title,
-                    `translateX(${-300 * clickCounter}px)`
+                    `translateX(${-420 * clickCounter}px)`
                   );
                   setClickCounter((clickCounter) => clickCounter + 1);
                 }}
@@ -111,6 +163,14 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+const PREVIEW = [
+  {
+    title: "PREVIEW",
+    fetchURL:
+      "https://yts.mx/api/v2/list_movies.json?quality=3D&minimum_rating=8&limit=5",
+  },
+];
 
 const SECTIONS = [
   {

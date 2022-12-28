@@ -4,10 +4,6 @@
   color: white;
 }
 
-.content-container {
-  margin-left: 50px;
-}
-
 .featured-content {
   height: 50vh;
   padding: 50px;
@@ -18,7 +14,7 @@
 }
 
 .featured-desc {
-  width: 500px;
+  /* width: 500px; */
   color: lightgray;
   margin: 30px 0;
 }
@@ -52,7 +48,7 @@
 .movie-list {
   display: flex;
   align-items: center;
-  height: 300px;
+  height: 360px;
   transform: translateX(0);
   transition: all 1s ease-in-out;
 }
@@ -76,8 +72,8 @@
 }
 
 .movie-list-item-img {
-  width: 270px;
-  height: 200px;
+  width: 390px;
+  height: 250px;
   object-fit: cover;
   transition: all 1s ease-in-out;
   border-radius: 20px;
@@ -106,7 +102,7 @@
   position: absolute;
   top: 50%;
   left: 30px;
-  width: 230px;
+  width: 400px;
   opacity: 0;
   transition: all 1s ease-in-out;
 }
@@ -151,8 +147,96 @@
   transform: translateX(-20px);
 }
 
+.preview-container {
+  height: 400px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.preview-img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.preview-title {
+  color: white;
+  padding: 0 10px;
+  font-size: 33px;
+  font-style: oblique;
+  font-weight: bold;
+  position: absolute;
+  top: 35%;
+  left: 8%;
+}
+
+.preview-desc {
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  font-style: italic;
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  width: 600px;
+}
+
 @media only screen and (max-width: 900px) {
   .menu-container {
     display: none;
   }
+}
+
+.slideStyles {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.rightArrowStyles {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 32px;
+  font-size: 45px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.leftArrowStyles {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 32px;
+  font-size: 45px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.sliderStyles {
+  position: relative;
+  height: 100%;
+}
+
+.dotsContainerStyles {
+  display: flex;
+  justify-content: center;
+}
+
+.dotStyle {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.slideStylesWidthBackground {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(${slides[currentIndex].url});
 }

@@ -10,7 +10,7 @@ const MovieList = ({ fetchURL }) => {
     const fetchData = async () => {
       const response = await axios.get(fetchURL);
       setData(response.data.data.movies);
-      console.log(response.data.data.movies);
+      // console.log(response.data.data.movies);
     };
     fetchData().then(() => {
       setLoading(false);
@@ -28,7 +28,7 @@ const MovieList = ({ fetchURL }) => {
             imageUrl={item.large_cover_image}
             // imageUrl={item.background_image_original}
             name={item.title}
-            description={item.title_long}
+            description={item.summary}
           />
         ))
       )}

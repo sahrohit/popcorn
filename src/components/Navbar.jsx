@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="sidebar">
+      {/* <div className="sidebar">
         <i className="left-menu-icon fas fa-search"></i>
         <i className="left-menu-icon fas fa-home"></i>
         <i className="left-menu-icon fas fa-hourglass-half"></i>
@@ -62,7 +62,7 @@ const Navbar = () => {
         <i className="left-menu-icon fas fa-ticket-alt"></i>
         <i className="left-menu-icon fas fa-bookmark"></i>
         <i className="left-menu-icon fas fa-arrow-down"></i>
-      </div>
+      </div> */}
     </>
   );
 };

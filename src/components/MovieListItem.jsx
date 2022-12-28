@@ -5,7 +5,9 @@ const MovieListItem = ({ imageUrl, name, description }) => {
     <div className="movie-list-item">
       <img className="movie-list-item-img" src={imageUrl} alt="" />
       <span className="movie-list-item-title">{name}</span>
-      <p className="movie-list-item-desc">{description}</p>
+      <p className="movie-list-item-desc">
+        {description < 260 ? description : description.substring(0, 260) + "..."}
+      </p>
     </div>
   );
 };
