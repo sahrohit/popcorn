@@ -5,20 +5,7 @@ import "../styles/Home.css";
 import ImageSlider from "../components/ImageSlider";
 
 const HomePage = () => {
-  const [clickCounter, setClickCounter] = useState(0);
-  const [transformStyle, setTransforStyle] = useState("");
-  const [clickedTitle, setClickedTitle] = useState("");
   const [previews, setPreviews] = useState([]);
-
-  const translate = (title, transformStyle) => {
-    if (clickCounter > 10) {
-      setClickCounter(0);
-      setTransforStyle("translateX(0)");
-    } else {
-      setClickedTitle(title);
-      setTransforStyle(transformStyle);
-    }
-  };
 
   const [data, setData] = useState([]);
   const getAllData = () => {
@@ -40,7 +27,7 @@ const HomePage = () => {
   let arrayOfImage = [];
 
   useEffect(() => {
-    console.log('data', data);
+    console.log("data", data);
     data.map((movie) => {
       // console.log("url", movie.background_image);
       // arrayOfImage.push(movie.background_image);
@@ -50,12 +37,12 @@ const HomePage = () => {
           url: movie.background_image,
           title: movie.title,
           summary: movie.summary,
-        }
+        },
       ]);
     });
-  }, [])
+  }, []);
 
-  console.log('previews', previews);
+  console.log("previews", previews);
 
   return (
     <div className="container">
@@ -93,24 +80,7 @@ const HomePage = () => {
           <div className="movie-list-container" key={section.title}>
             <h1 className="movie-list-title">{section.title}</h1>
             <div className="movie-list-wrapper">
-              <div
-                className="movie-list"
-                style={{
-                  transform: clickedTitle === section.title && transformStyle,
-                }}
-              >
-                <MovieList fetchURL={section.fetchURL} />
-              </div>
-              <i
-                className="fas fa-chevron-right arrow"
-                onClick={() => {
-                  translate(
-                    section.title,
-                    `translateX(${-420 * clickCounter}px)`
-                  );
-                  setClickCounter((clickCounter) => clickCounter + 1);
-                }}
-              ></i>
+              <MovieList title={section.title} fetchURL={section.fetchURL} />
             </div>
           </div>
         ))}
@@ -136,24 +106,7 @@ const HomePage = () => {
           <div className="movie-list-container" key={section.title}>
             <h1 className="movie-list-title">{section.title}</h1>
             <div className="movie-list-wrapper">
-              <div
-                className="movie-list"
-                style={{
-                  transform: clickedTitle === section.title && transformStyle,
-                }}
-              >
-                <MovieList fetchURL={section.fetchURL} />
-              </div>
-              <i
-                className="fas fa-chevron-right arrow"
-                onClick={() => {
-                  translate(
-                    section.title,
-                    `translateX(${-420 * clickCounter}px)`
-                  );
-                  setClickCounter((clickCounter) => clickCounter + 1);
-                }}
-              ></i>
+              <MovieList title={section.title} fetchURL={section.fetchURL} />
             </div>
           </div>
         ))}
