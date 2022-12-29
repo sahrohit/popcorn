@@ -26,23 +26,45 @@ const HomePage = () => {
 
   let arrayOfImage = [];
 
+  data.map((movie) => {
+    arrayOfImage.push(movie.background_image);
+  });
+
   useEffect(() => {
     console.log("data", data);
     data.map((movie) => {
       // console.log("url", movie.background_image);
-      // arrayOfImage.push(movie.background_image);
-      setPreviews([
-        ...previews,
-        {
-          url: movie.background_image,
-          title: movie.title,
-          summary: movie.summary,
-        },
-      ]);
+      arrayOfImage.push(movie.background_image);
+      // setPreviews([
+      //   ...previews,
+      //   {
+      //     url: movie.background_image,
+      //     title: movie.title,
+      //     summary: movie.summary,
+      //   },
+      // ]);
     });
   }, []);
 
-  console.log("previews", previews);
+  const [previewData, setPreviewData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://yts.mx/api/v2/list_movies.json?quality=3D&minimum_rating=8&limit=5")
+      .then(res => {
+          res.data.data.movies.map((item) => {
+            setPreviewData[{
+              "url": item.url,
+              "title": item.title,
+              "summary": item.summary
+            }]
+        })
+        console.log("previews", previewData);
+      console.log("Your new array of modified objects here", previewData)
+    })
+    .catch(err => { console.log('Error', err) })
+  }, [])
+
+  console.log('==', previewData.title);
 
   return (
     <div className="container">
@@ -127,31 +149,31 @@ const PREVIEW = [
 
 const SECTIONS = [
   {
-    title: "NEW RELEASES",
+    title: "ACTION",
     fetchURL:
-      "https://yts.mx/api/v2/list_movies.json?sort=year&order_by=desc&limit=15",
+      "https://yts.mx/api/v2/list_movies.json?genre=action&limit=10",
   },
   {
-    title: "HOT PICKS",
+    title: "CRIME",
     fetchURL:
-      "https://yts.mx/api/v2/list_movies.json?sort=peers&order_by=asc&limit=15",
+      "https://yts.mx/api/v2/list_movies.json?genre=crime&limit=10",
   },
   {
-    title: "TOP PICKS",
+    title: "DRAMA",
     fetchURL:
-      "https://yts.mx/api/v2/list_movies.json?sort=seeds&order_by=asc&limit=15",
+      "https://yts.mx/api/v2/list_movies.json?genre=drama&limit=10",
   },
 ];
 
 const SECTIONS_AGAIN = [
   {
-    title: "YOUR PICKS",
+    title: "THRILLER",
     fetchURL:
-      "https://yts.mx/api/v2/list_movies.json?sort=peers&order_by=asc&limit=15",
+      "https://yts.mx/api/v2/list_movies.json?genre=thriller&limit=10",
   },
   {
-    title: "POPULRAR MOVIES",
+    title: "ANIMATION",
     fetchURL:
-      "https://yts.mx/api/v2/list_movies.json?sort=year&order_by=desc&limit=15",
+      "https://yts.mx/api/v2/list_movies.json?genre=animation&limit=10",
   },
 ];

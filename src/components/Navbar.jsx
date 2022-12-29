@@ -21,11 +21,9 @@ const Navbar = () => {
               </li>
 
               <li className="menu-list-item">
-                <Link to="/movie">Movie</Link>
+                <Link to="/movie">Movies</Link>
               </li>
-              <li className="menu-list-item">Series</li>
-              <li className="menu-list-item">Popular</li>
-              <li className="menu-list-item">Trends</li>
+              <li className="menu-list-item">Watch List</li>
             </ul>
           </div>
           <div className="profile-container">

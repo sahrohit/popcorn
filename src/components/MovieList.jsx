@@ -33,6 +33,13 @@ const MovieList = ({ title, fetchURL }) => {
 
   return (
     <>
+    <i
+        className="fas fa-chevron-left arrow-left"
+        onClick={() => {
+          translate(title, `translateX(${-420 * clickCounter}px)`);
+          setClickCounter((clickCounter) => clickCounter - 1);
+        }}
+      ></i>
       <div
         className="movie-list"
         style={{
@@ -54,7 +61,7 @@ const MovieList = ({ title, fetchURL }) => {
         )}
       </div>
       <i
-        className="fas fa-chevron-right arrow"
+        className="fas fa-chevron-right arrow-right"
         onClick={() => {
           translate(title, `translateX(${-420 * clickCounter}px)`);
           setClickCounter((clickCounter) => clickCounter + 1);

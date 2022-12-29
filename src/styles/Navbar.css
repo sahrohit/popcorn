@@ -17,6 +17,11 @@
   flex: 1;
 }
 
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
 .logo {
   font-family: "Sen", "sans-serif";
   font-size: 30px;
@@ -24,12 +29,18 @@
 }
 
 .menu-container {
-  flex: 6;
+  flex: 4;
 }
 
 .menu-list {
   display: flex;
   list-style: none;
+  border-bottom-style: none;
+}
+
+.menu-list li Link {
+  text-decoration: none;
+  border-bottom-style: none;
 }
 
 .menu-list-item {

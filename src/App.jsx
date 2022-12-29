@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import NotFoundPage from "./pages/404";
 import HomePage from "./pages/Home";
@@ -23,6 +24,7 @@ function Layout() {
     <>
       <Navbar />
       <Outlet />
+      <Footer />
     </>
   );
 }
